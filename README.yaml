@@ -1,0 +1,62 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: terraform-module-template
+
+# Tags of this project
+tags:
+  - terraform
+  - terraform-modules
+
+# Categories of this project
+categories:
+  - terraform-modules/supported
+
+# License of this project
+license: "APACHE2"
+
+# Canonical GitHub repo
+github_repo: enter-at/terraform-module-template
+
+# Badges to display
+badges:
+  - name: "Build Status"
+    image: "https://github.com/enter-at/terraform-module-template/workflows/Terraform%20Lint/badge.svg"
+    url: "https://github.com/enter-at/terraform-module-template/actions"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/enter-at/terraform-module-template.svg"
+    url: "https://github.com/enter-at/terraform-module-template/releases/latest"
+  - name: "Semantic Release"
+    image: "https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg"
+    url: "https://github.com/semantic-release/semantic-release"
+
+related:
+  - name: "terraform-aws-lambda"
+    description: "Terraform module designed to facilitate the creation of AWS Lambda functions."
+    url: "https://github.com/enter-at/terraform-aws-lambda"
+
+# Short description of this project
+description: |-
+  Terraform module designed to facilitate ...
+
+# How to use this project
+usage: |-
+  ### Simple Example
+
+  ```hcl
+  module "module" {
+    source = "git::https://github.com/enter-at/terraform-module-template.git?ref=master"
+  }
+  ```
+
+include:
+  - "docs/terraform.md"
+
+# Contributors to this project
+contributors:
+  - name: "Steffen Leistner"
+    github: "sleistner"
