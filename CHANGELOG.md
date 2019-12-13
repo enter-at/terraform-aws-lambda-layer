@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/enter-at/terraform-aws-lambda-layer/compare/v1.1.0...v1.1.1) (2019-12-13)
+
+
+### Bug Fixes
+
+* **main:** define description ([4eb8e1a](https://github.com/enter-at/terraform-aws-lambda-layer/commit/4eb8e1ab8fd1910c84f54304d19949896287df74))
+
 # [1.1.0](https://github.com/enter-at/terraform-aws-lambda-layer/compare/v1.0.0...v1.1.0) (2019-12-13)
 
 
