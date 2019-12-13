@@ -41,7 +41,7 @@ related:
 
 # Short description of this project
 description: |-
-  Terraform module designed to facilitate ...
+  Terraform module designed to facilitate the creation of AWS Lambda layers.
 
 # How to use this project
 usage: |-
