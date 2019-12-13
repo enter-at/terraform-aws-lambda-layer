@@ -15,7 +15,7 @@
 # terraform-module-template [![Build Status](https://github.com/enter-at/terraform-module-template/workflows/Terraform%20Lint/badge.svg)](https://github.com/enter-at/terraform-module-template/actions) [![Latest Release](https://img.shields.io/github/release/enter-at/terraform-module-template.svg)](https://github.com/enter-at/terraform-module-template/releases/latest) [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
-Terraform module designed to facilitate ...
+Terraform module designed to facilitate the creation of AWS Lambda layers.
 
 
 ---
@@ -51,14 +51,30 @@ module "module" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| enabled | (Optional) Set whether to enable the module. Defaults to true. | bool | `true` | no |
+| compatible_runtimes | (Optional) A list of Runtimes this layer is compatible with. Up to 5 runtimes can be specified. | list(string) | `null` | no |
+| description | (Optional) Description of what the Lambda layer does. | string | `null` | no |
+| layer_name | (Required) A unique name for the Lambda Layer. | string | - | yes |
+| package_file | (Optional) The location of the package manager config file. Can be one of (package.json, requirements.txt, Pipfile) | string | `null` | no |
+| rsync_pattern | (Optional) A list of rsync pattern to include or exclude files and directories. | list(string) | `<list>` | no |
+| source_dir | (Optional) The location of the Lamvda layer source code. Requires source_type to be defined. | string | `null` | no |
+| source_type | (Optional) The location of the Lambda layer source type. Can be one of (nodejs, python) | string | `null` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| arn | The Amazon Resource Name (ARN) of the Lambda layer with version. |
+| created_date | The date the layer was created. |
+| layer_arn | The Amazon Resource Name (ARN) of the Lambda layer without version. |
+| source_code_size | The size in bytes of the layer .zip file. |
+| version | The Lamba layer version. |
 
 
 
 
 ## Share the Love
 
-Like this project? 
+Like this project?
 Please give it a ★ on [our GitHub](https://github.com/enter-at/terraform-module-template)!
 
 
@@ -128,11 +144,12 @@ See [LICENSE](LICENSE) for full details.
 
 ### Contributors
 
-|  [![Steffen Leistner][sleistner_avatar]][sleistner_homepage]<br/>[Steffen Leistner][sleistner_homepage] |
-|---|
+
+[![Steffen Leistner][sleistner_avatar]][sleistner_homepage]
+
 
   [sleistner_homepage]: https://github.com/sleistner
-  [sleistner_avatar]: https://res.cloudinary.com/enter-at/image/fetch/w_100,h_100,c_thumb/https://github.com/sleistner.png
+  [sleistner_avatar]: https://res.cloudinary.com/enter-at/image/fetch/f_png,r_max,w_100,h_100,c_thumb/https://github.com/sleistner.png
 
 
 
