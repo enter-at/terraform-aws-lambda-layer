@@ -5,7 +5,7 @@
 #
 
 # Name of this project
-name: terraform-module-template
+name: terraform-aws-lambda-layer
 
 # Tags of this project
 tags:
@@ -20,16 +20,16 @@ categories:
 license: "APACHE2"
 
 # Canonical GitHub repo
-github_repo: enter-at/terraform-module-template
+github_repo: enter-at/terraform-aws-lambda-layer
 
 # Badges to display
 badges:
   - name: "Build Status"
-    image: "https://github.com/enter-at/terraform-module-template/workflows/Terraform%20Lint/badge.svg"
-    url: "https://github.com/enter-at/terraform-module-template/actions"
+    image: "https://github.com/enter-at/terraform-aws-lambda-layer/workflows/Terraform%20Lint/badge.svg"
+    url: "https://github.com/enter-at/terraform-aws-lambda-layer/actions"
   - name: "Latest Release"
-    image: "https://img.shields.io/github/release/enter-at/terraform-module-template.svg"
-    url: "https://github.com/enter-at/terraform-module-template/releases/latest"
+    image: "https://img.shields.io/github/release/enter-at/terraform-aws-lambda-layer.svg"
+    url: "https://github.com/enter-at/terraform-aws-lambda-layer/releases/latest"
   - name: "Semantic Release"
     image: "https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg"
     url: "https://github.com/semantic-release/semantic-release"
@@ -48,8 +48,27 @@ usage: |-
   ### Simple Example
 
   ```hcl
-  module "module" {
-    source = "git::https://github.com/enter-at/terraform-module-template.git?ref=master"
+  module "layer" {
+    source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=master"
+    layer_name   = "dependencies"
+    package_file = "../Pipfile"
+  }
+  ```
+
+  ### Advanced Example
+
+  ```hcl
+  module "layer" {
+    source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=master"
+    layer_name   = "dependencies"
+    source_dir   = "../src/lib"
+    source_type  = "python"
+
+    rsync_pattern = [
+      "--exclude=**tests**"
+      "--exclude="**__pycache__**"
+      "--include=*.py"
+    ]
   }
   ```
 
