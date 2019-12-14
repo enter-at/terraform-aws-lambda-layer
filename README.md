@@ -12,7 +12,7 @@
 
 [<img src="https://res.cloudinary.com/enter-at/image/upload/v1576145406/static/logo-svg.svg" alt="enter-at" width="100">][website]
 
-# terraform-module-template [![Build Status](https://github.com/enter-at/terraform-module-template/workflows/Terraform%20Lint/badge.svg)](https://github.com/enter-at/terraform-module-template/actions) [![Latest Release](https://img.shields.io/github/release/enter-at/terraform-module-template.svg)](https://github.com/enter-at/terraform-module-template/releases/latest) [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+# terraform-aws-lambda-layer [![Build Status](https://github.com/enter-at/terraform-aws-lambda-layer/workflows/Terraform%20Lint/badge.svg)](https://github.com/enter-at/terraform-aws-lambda-layer/actions) [![Latest Release](https://img.shields.io/github/release/enter-at/terraform-aws-lambda-layer.svg)](https://github.com/enter-at/terraform-aws-lambda-layer/releases/latest) [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
 Terraform module designed to facilitate the creation of AWS Lambda layers.
@@ -31,14 +31,33 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 **IMPORTANT:** The `master` branch is used in `source` just as an example. In your code, do not pin to `master` because there may be breaking changes between releases.
-Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://github.com/enter-at/terraform-module-template/releases).
+Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://github.com/enter-at/terraform-aws-lambda-layer/releases).
 
 
 ### Simple Example
 
 ```hcl
-module "module" {
-  source = "git::https://github.com/enter-at/terraform-module-template.git?ref=master"
+module "layer" {
+  source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=master"
+  layer_name   = "dependencies"
+  package_file = "../Pipfile"
+}
+```
+
+### Advanced Example
+
+```hcl
+module "layer" {
+  source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=master"
+  layer_name   = "dependencies"
+  source_dir   = "../src/lib"
+  source_type  = "python"
+
+  rsync_pattern = [
+    "--exclude=**tests**"
+    "--exclude="**__pycache__**"
+    "--include=*.py"
+  ]
 }
 ```
 
@@ -75,7 +94,7 @@ module "module" {
 ## Share the Love
 
 Like this project?
-Please give it a ★ on [our GitHub](https://github.com/enter-at/terraform-module-template)!
+Please give it a ★ on [our GitHub](https://github.com/enter-at/terraform-aws-lambda-layer)!
 
 
 ## Related Projects
@@ -90,13 +109,13 @@ Check out these related projects.
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/enter-at/terraform-module-template/issues).
+File a GitHub [issue](https://github.com/enter-at/terraform-aws-lambda-layer/issues).
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/enter-at/terraform-module-template/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/enter-at/terraform-aws-lambda-layer/issues) to report any bugs or file feature requests.
 
 ### Developing
 
