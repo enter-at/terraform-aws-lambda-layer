@@ -54,9 +54,11 @@ module "layer" {
   source_type  = "python"
 
   rsync_pattern = [
-    "--exclude=**tests**"
-    "--exclude="**__pycache__**"
-    "--include=*.py"
+    "--exclude='**tests**'"
+    "--exclude="'**__pycache__**'"
+    "--include=module/{a,b,c}/"
+    "--include='*.py'"
+    "--exclude='module/*'"
   ]
 }
 ```
