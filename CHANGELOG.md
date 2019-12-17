@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/enter-at/terraform-aws-lambda-layer/compare/v1.1.1...v1.2.0) (2019-12-17)
+
+
+### Features
+
+* **build:** add brace expansion option ([366870a](https://github.com/enter-at/terraform-aws-lambda-layer/commit/366870a1de07a7104291e8a08628215583f50a4f))
+
 ## [1.1.1](https://github.com/enter-at/terraform-aws-lambda-layer/compare/v1.1.0...v1.1.1) (2019-12-13)
 
 
