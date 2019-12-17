@@ -39,7 +39,7 @@ install_npm_dependencies() {
   mkdir -p "$dist_dir"
 
   cp "$PACKAGE_FILE" "$dist_package_file"
-  npm install --production --prefix "$dist_dir/"
+  npm install --production --no-optional --no-package-lock --prefix "$dist_dir/"
 }
 
 install_pipenv_dependencies() {
