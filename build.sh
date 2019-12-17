@@ -66,8 +66,8 @@ build_from_source_dir() {
   mkdir -p "$dist_dir"
 
   pushd "${SOURCE_DIR}" >/dev/null || exit
-  # shellcheck disable=SC2086
-  rsync -Ravz ${RSYNC_PATTERN} --exclude="*" --exclude="*.*" "." "$dist_dir"
+  # shellcheck disable=SC2046
+  rsync -Ravz $(eval echo "$RSYNC_PATTERN") --exclude="*.*" "." "$dist_dir"
   popd >/dev/null || exit
 }
 

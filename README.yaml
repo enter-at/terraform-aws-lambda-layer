@@ -9,6 +9,9 @@ name: terraform-aws-lambda-layer
 
 # Tags of this project
 tags:
+  - aws
+  - aws-lambda
+  - aws-lambda-layer
   - terraform
   - terraform-modules
 
@@ -65,9 +68,11 @@ usage: |-
     source_type  = "python"
 
     rsync_pattern = [
-      "--exclude=**tests**"
-      "--exclude="**__pycache__**"
-      "--include=*.py"
+      "--exclude='**tests**'"
+      "--exclude="'**__pycache__**'"
+      "--include=module/{a,b,c}/"
+      "--include='*.py'"
+      "--exclude='module/*'"
     ]
   }
   ```
