@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: readme/update
         shell: bash
@@ -27,15 +27,14 @@ jobs:
           make readme
 
       - name: Create Pull Request
-        uses: cloudposse/actions/github/create-pull-request@master
+        uses: peter-evans/create-pull-request@v2
         with:
           labels: automated pr
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_BOT_TOKEN }}
-          COMMIT_MESSAGE: "docs(README): auto update all sections"
-          PULL_REQUEST_TITLE: Automatic Update of README.md
-          PULL_REQUEST_BODY: |-
+          token: ${{ secrets.GITHUB_BOT_TOKEN }}
+          commit-message: "docs(README): auto update all sections"
+          title: Automatic Update of README.md
+          body: |-
             This is an auto-generated PR which updates the `README.md` from the `README.yaml`
             using the [`cloudposse/build-harness`](https://github.com/cloudposse/build-harness).
-          PULL_REQUEST_BRANCH: github-actions/auto-readme
-          BRANCH_SUFFIX: timestamp
+          branch: github-actions/auto-readme
+          branch-suffix: timestamp
