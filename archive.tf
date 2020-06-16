@@ -20,10 +20,10 @@ resource "null_resource" "build" {
   provisioner "local-exec" {
     command = "${path.module}/build.sh"
     environment = {
-      DIST_DIR     = data.null_data_source.dist.outputs.path
-      SOURCE_DIR   = var.source_dir
-      SOURCE_TYPE  = var.source_type
-      PACKAGE_FILE = var.package_file
+      DIST_DIR      = data.null_data_source.dist.outputs.path
+      SOURCE_DIR    = var.source_dir
+      SOURCE_TYPE   = var.source_type
+      PACKAGE_FILE  = var.package_file
       RSYNC_PATTERN = join(" ", var.rsync_pattern)
     }
   }
