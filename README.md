@@ -70,6 +70,7 @@ module "layer" {
 
 
 
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
@@ -107,6 +108,7 @@ module "layer" {
 | source\_code\_size | The size in bytes of the layer .zip file. |
 | version | The Lamba layer version. |
 
+<!-- markdownlint-restore -->
 
 
 
@@ -182,9 +184,7 @@ See [LICENSE](LICENSE) for full details.
 
 ### Contributors
 
-
 [![Steffen Leistner][sleistner_avatar]][sleistner_homepage]
-
 
   [sleistner_homepage]: https://github.com/sleistner
   [sleistner_avatar]: https://res.cloudinary.com/enter-at/image/fetch/f_png,r_max,w_100,h_100,c_thumb/https://github.com/sleistner.png
