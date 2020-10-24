@@ -1,3 +1,4 @@
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
@@ -35,3 +36,4 @@
 | source\_code\_size | The size in bytes of the layer .zip file. |
 | version | The Lamba layer version. |
 
+<!-- markdownlint-restore -->
