@@ -10,9 +10,8 @@
 
   -->
 
-[<img src="https://res.cloudinary.com/enter-at/image/upload/v1576145406/static/logo-svg.svg" alt="enter-at" width="100">][website]
-
-# terraform-aws-lambda-layer [![Build Status](https://github.com/enter-at/terraform-aws-lambda-layer/workflows/Terraform%20Lint/badge.svg)](https://github.com/enter-at/terraform-aws-lambda-layer/actions) [![Latest Release](https://img.shields.io/github/release/enter-at/terraform-aws-lambda-layer.svg)](https://github.com/enter-at/terraform-aws-lambda-layer/releases/latest) [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+# terraform-aws-lambda-layer
+ [![Build Status](https://github.com/enter-at/terraform-aws-lambda-layer/workflows/Code%20checks%20and%20tests/badge.svg)](https://github.com/enter-at/terraform-aws-lambda-layer/actions) [![Latest Release](https://img.shields.io/github/release/enter-at/terraform-aws-lambda-layer.svg)](https://github.com/enter-at/terraform-aws-lambda-layer/releases/latest) [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
 Terraform module designed to facilitate the creation of AWS Lambda layers.
@@ -27,10 +26,12 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
+
+
 ## Usage
 
 
-**IMPORTANT:** The `master` branch is used in `source` just as an example. In your code, do not pin to `master` because there may be breaking changes between releases.
+**IMPORTANT:** The `main` branch is used in `source` just as an example. In your code, do not pin to `main` because there may be breaking changes between releases.
 Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://github.com/enter-at/terraform-aws-lambda-layer/releases).
 
 
@@ -38,7 +39,7 @@ Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest re
 
 ```hcl
 module "layer" {
-  source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=master"
+  source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=main"
   layer_name   = "dependencies"
   package_file = "../Pipfile"
 }
@@ -48,7 +49,7 @@ module "layer" {
 
 ```hcl
 module "layer" {
-  source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=master"
+  source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=main"
   layer_name   = "dependencies"
   source_dir   = "../src/lib"
   source_type  = "python"
@@ -70,11 +71,12 @@ module "layer" {
 
 
 
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.0 |
+| terraform | >= 0.13 |
 
 ## Providers
 
@@ -107,6 +109,7 @@ module "layer" {
 | source\_code\_size | The size in bytes of the layer .zip file. |
 | version | The Lamba layer version. |
 
+<!-- markdownlint-restore -->
 
 
 
@@ -179,16 +182,3 @@ See [LICENSE](LICENSE) for full details.
 
 
 
-
-### Contributors
-
-
-[![Steffen Leistner][sleistner_avatar]][sleistner_homepage]
-
-
-  [sleistner_homepage]: https://github.com/sleistner
-  [sleistner_avatar]: https://res.cloudinary.com/enter-at/image/fetch/f_png,r_max,w_100,h_100,c_thumb/https://github.com/sleistner.png
-
-
-
-  [website]: https://github.com/enter-at
