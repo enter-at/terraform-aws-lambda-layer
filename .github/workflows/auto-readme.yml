@@ -1,10 +1,10 @@
 name: Generate Readme
 
 on:
-  # Open a PR to update README on merge to master (as necessary)
+  # Open a PR to update README on merge to main (as necessary)
   push:
     branches:
-      - master
+      - main
 
   # Update README nightly
   schedule:
@@ -14,13 +14,12 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: readme/update
         shell: bash
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_BOT_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.GH_BOT_TOKEN }}"
         run: |
           make init
           make readme/deps
@@ -29,8 +28,10 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          labels: automated pr
-          token: ${{ secrets.GITHUB_BOT_TOKEN }}
+          labels: |
+            automated pr
+            readme
+          token: ${{ secrets.GH_BOT_TOKEN }}
           commit-message: "docs(README): auto update all sections"
           title: Automatic Update of README.md
           body: |-
@@ -38,3 +39,4 @@ jobs:
             using the [`cloudposse/build-harness`](https://github.com/cloudposse/build-harness).
           branch: github-actions/auto-readme
           branch-suffix: timestamp
+          base: main

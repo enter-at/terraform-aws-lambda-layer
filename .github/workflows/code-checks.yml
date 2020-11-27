@@ -1,0 +1,39 @@
+name: Code checks and tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.13.5
+
+      - name: Run Terraform format
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Run Terraform init
+        id: init
+        run: terraform init -backend=false ./tests
+
+      - name: Run Terraform validate
+        id: validate
+        run: terraform validate ./tests
+
+      - name: Run Shellcheck
+        uses: reviewdog/action-shellcheck@v1
+        with:
+          github_token: ${{ secrets.GH_BOT_TOKEN }}
+          reporter: github-pr-review
+
