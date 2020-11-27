@@ -1,8 +1,9 @@
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.0 |
+| terraform | >= 0.13 |
 
 ## Providers
 
@@ -35,3 +36,4 @@
 | source\_code\_size | The size in bytes of the layer .zip file. |
 | version | The Lamba layer version. |
 
+<!-- markdownlint-restore -->
