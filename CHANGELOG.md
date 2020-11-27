@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/enter-at/terraform-aws-lambda-layer/compare/v1.2.0...v2.0.0) (2020-11-27)
+
+
+### Features
+
+* update terraform to version 0.13 ([728c283](https://github.com/enter-at/terraform-aws-lambda-layer/commit/728c2836792f22bfda2f3f6671d5958e0b7412d1))
+
+
+### BREAKING CHANGES
+
+* terraform has been updated to version 0.13
+
 # [1.2.0](https://github.com/enter-at/terraform-aws-lambda-layer/compare/v1.1.1...v1.2.0) (2019-12-17)
 
 
