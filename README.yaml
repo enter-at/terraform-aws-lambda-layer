@@ -28,7 +28,7 @@ github_repo: enter-at/terraform-aws-lambda-layer
 # Badges to display
 badges:
   - name: "Build Status"
-    image: "https://github.com/enter-at/terraform-aws-lambda-layer/workflows/Terraform%20Lint/badge.svg"
+    image: "https://github.com/enter-at/terraform-aws-lambda-layer/workflows/Code%20checks%20and%20tests/badge.svg"
     url: "https://github.com/enter-at/terraform-aws-lambda-layer/actions"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/enter-at/terraform-aws-lambda-layer.svg"
@@ -52,7 +52,7 @@ usage: |-
 
   ```hcl
   module "layer" {
-    source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=master"
+    source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=main"
     layer_name   = "dependencies"
     package_file = "../Pipfile"
   }
@@ -62,7 +62,7 @@ usage: |-
 
   ```hcl
   module "layer" {
-    source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=master"
+    source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=main"
     layer_name   = "dependencies"
     source_dir   = "../src/lib"
     source_type  = "python"
@@ -80,7 +80,3 @@ usage: |-
 include:
   - "docs/terraform.md"
 
-# Contributors to this project
-contributors:
-  - name: "Steffen Leistner"
-    github: "sleistner"
