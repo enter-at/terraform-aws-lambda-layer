@@ -1,15 +1,9 @@
 resource "random_uuid" "id" {}
 
-data "null_data_source" "dist" {
-  inputs = {
-    path = abspath("${path.module}/dist/${random_uuid.id.result}")
-  }
-}
+locals {
+  dist    = abspath("${path.module}/dist/${random_uuid.id.result}")
+  archive = "${local.dist}.zip"
 
-data "null_data_source" "archive" {
-  inputs = {
-    path = "${data.null_data_source.dist.outputs.path}.zip"
-  }
 }
 
 resource "null_resource" "build" {
@@ -20,7 +14,7 @@ resource "null_resource" "build" {
   provisioner "local-exec" {
     command = "${path.module}/build.sh"
     environment = {
-      DIST_DIR      = data.null_data_source.dist.outputs.path
+      DIST_DIR      = local.dist
       SOURCE_DIR    = var.source_dir
       SOURCE_TYPE   = var.source_type
       PACKAGE_FILE  = var.package_file
@@ -31,8 +25,8 @@ resource "null_resource" "build" {
 
 data "archive_file" "layer" {
   type        = "zip"
-  source_dir  = data.null_data_source.dist.outputs.path
-  output_path = data.null_data_source.archive.outputs.path
+  source_dir  = local.dist
+  output_path = local.archive
 
   depends_on = [
     null_resource.build
