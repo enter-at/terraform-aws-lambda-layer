@@ -33,3 +33,5 @@ build-harness
 .README.md.gotmpl
 
 .idea
+
+dist
