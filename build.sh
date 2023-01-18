@@ -27,6 +27,10 @@ install_dependencies() {
     install_pipenv_dependencies
     ;;
 
+  *Gemfile)
+    install_gem_dependencies
+    ;;
+
   *)
     build_from_source_dir
     ;;
@@ -56,6 +60,17 @@ install_pip_dependencies() {
   mkdir -p "$dist_dir"
 
   pip install --target "$dist_dir" --requirement="$PACKAGE_FILE"
+}
+
+install_gem_dependencies() {
+  SOURCE_DIR="${SOURCE_DIR:?'SOURCE_DIR variable missing.'}"
+  mkdir -p "$DIST_DIR"
+  pushd "${SOURCE_DIR}" >/dev/null || exit
+  bundle config --local path "$DIST_DIR"
+  bundle config --local deployment true
+  bundle config --local without test:development
+  bundle install --jobs 4
+  popd >/dev/null || exit
 }
 
 build_from_source_dir() {
