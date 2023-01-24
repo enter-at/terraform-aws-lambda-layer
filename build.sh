@@ -70,6 +70,8 @@ install_gem_dependencies() {
   bundle config --local deployment true
   bundle config --local without test:development
   bundle install --jobs 4
+  rm -rf .bundle # remove .bundle directory, as it is unwanted when not in deployment mode
+  cp Gemfile Gemfile.lock "$DIST_DIR" # Only way to ensure referential integrity
   popd >/dev/null || exit
 }
 
