@@ -22,3 +22,8 @@ output "source_code_size" {
   value       = aws_lambda_layer_version.main.source_code_size
   description = "The size in bytes of the layer .zip file."
 }
+
+output "archive_path" {
+  value = data.archive_file.layer.output_path
+  description = "Path to archive file"
+}
