@@ -91,13 +91,14 @@ usage: |-
 
   Note the following
 
-  * The package includes the following directory structure ruby/*ruby\_version*
-  * The root directory contains Gemfile/Gemfile.lock. These are included for referential integrity
-    You will probably wanto to copy these on startup of your `lambda_function`
+  * The package includes the following directory structure ruby/*ruby\_version*/...
+  * The ruby directory contains Gemfile/Gemfile.lock. These are included for referential integrity
+    You will may want to symlink these together with your `lambda_function`
 
-  ```ruby
-  # Before any require
-  system("cp /opt/Gemfile.* .") unless File.exist?('Gemfile.lock')
+  ```sh
+  # In your script for packing lambda function
+  ln -sf /opt/ruby/Gemfile Gemfile
+  ln -sf /opt/ruby/Gemfile.lock Gemfile.lock
   ```
 
 include:
