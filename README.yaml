@@ -77,6 +77,30 @@ usage: |-
   }
   ```
 
+  ### Example on Ruby Gem layer
+
+  ```hcl
+  module "layer" {
+    source = "git::https://github.com/enter-at/terraform-aws-lambda-layer.git?ref=main"
+    layer_name   = "dependencies"
+    source       = "."
+    package_file = "Gemfile"
+    compatible_runtimes = ["ruby2.7"]
+  }
+  ```
+
+  Note the following
+
+  * The package includes the following directory structure ruby/*ruby\_version*/...
+  * The ruby directory contains Gemfile/Gemfile.lock. These are included for referential integrity
+    You will may want to symlink these together with your `lambda_function`
+
+  ```sh
+  # In your script for packing lambda function
+  ln -sf /opt/ruby/Gemfile Gemfile
+  ln -sf /opt/ruby/Gemfile.lock Gemfile.lock
+  ```
+
 include:
   - "docs/terraform.md"
 
